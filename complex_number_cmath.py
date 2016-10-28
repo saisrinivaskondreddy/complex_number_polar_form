@@ -14,17 +14,19 @@ if re.match(postive_img, complex_number):
 	real,img=complex_number.split("+")
 elif re.match(negtive_img, complex_number):
 	real,img=complex_number.split("-")
+	img="-"+img
 elif re.match(negtive_rel, complex_number):
 	real,img=complex_number.split("+")
 elif re.match(negtive_both, complex_number):
-	occurance=[m.start for m in re.finder(negtive_both, complex_number)]
-	real=str[:occurance[1]]
-	img=str[occurance[1]+1:]
+	#occurance=[m.start for m in re.finditer(negtive_both, complex_number)]
+	#occurance=[m.start for m in re.finditer('-', complex_number)]
+	occurance=complex_number.split('-')
+	real="-"+occurance[1]
+	img="-"+occurance[2]
+	#print real
+	#print img
 
-#real,img=complex_number.split("+")
-#img_1=[int(s) in img.split() if s.isdigit()]
 img_1,dummy =img.split("j")
-
 #print "real part:%d" %int(real)
 #print "img   part:%d" %int(img_1)
 print abs(complex(int(real),int(img_1)))
